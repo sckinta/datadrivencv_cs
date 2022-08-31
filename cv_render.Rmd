@@ -1,0 +1,104 @@
+---
+title: "Chun Su CV"
+author: Chun Su
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+output:
+  pagedown::html_resume:
+    self_contained: true
+    css: ['override.css', 'resume', 'https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css']
+---
+
+```{css, echo=FALSE}
+.pagedjs_page:not(:first-of-type) {
+  --sidebar-width: 0rem;
+  --sidebar-background-color: #ffffff;
+  --main-width: calc(var(--content-width) - var(--sidebar-width));
+  --decorator-horizontal-margin: 0.2in;
+}
+```
+
+```{r, include=F}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(tidyverse)
+
+source("helper_functions.R")
+
+cv_google_sheet <- "https://docs.google.com/spreadsheets/d/1dcd31plt_SmlHMWiNDiXHgFcJIHdhPyGVORvgCt5EMk/edit?usp=sharing"
+
+cv <- create_cv_obj(cv_google_sheet)
+```
+
+
+# Aside
+
+![Chun Su](https://media-exp1.licdn.com/dms/image/C4E03AQH2-cbjQTrAKw/profile-displayphoto-shrink_800_800/0/1516780179563?e=1667433600&v=beta&t=ycj2c4SfbINkl4kwmciBOz0itQXDqzdxYhCp82HZ0-I)
+
+## Contact Info {#contact}
+
+```{r}
+print_contact_info(cv)
+```
+
+## Skill Highlights {#skills}
+
+```{r}
+print_skills(cv)
+```
+
+
+## Disclaimer {#disclaimer}
+
+Last updated on `r Sys.Date()`.
+
+# Main
+
+## Chun Su {#title}
+
+### Bioinformatics Scientist \| Computational Biologist
+
+I have 10+ years of hands-on experience in bioinformatics. Skilled in both molecular cloning and computational analysis of next generation sequencing (NGS) data. Proficient in a variety of programming languages, HPC cluster systems, cutting-edge bioinformatic software, and multivariate statistical analysis. Knowledgeable about molecular cell biology and immunology. Proven experience in troubleshooting and meeting challenging deadlines in a fast-paced work environment. Excellent professional communication and leadership skills developed through community service and extensive teaching experiences.
+
+## Education {data-icon=graduation-cap data-concise=true}
+
+```{r}
+print_section(cv, "Education")
+```
+
+
+## Professional Experience {data-icon="suitcase"}
+
+```{r}
+print_section(cv, "Research Experience")
+```
+
+## Leadership Experience {data-icon="black-tie"}
+
+```{r}
+print_section(cv, "Leadership Experience")
+```
+
+## Awards and Honors {data-icon="trophy"}
+
+```{r}
+print_section(cv, "Awards and Honors")
+```
+
+## Poster and Presentation {data-icon="users"}
+
+```{r}
+print_section(cv, "Poster and Presentation")
+```
+
+## Selected Publications {data-icon="book"}
+
+```{r}
+print_section(cv, "Publications")
+```
+
