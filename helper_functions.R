@@ -71,6 +71,8 @@ print_skills <- function(cv){
 print_section <- function(cv, section_id, glue_template = "default"){
     df <- cv$entries %>% 
         filter(section == section_id, in_resume) %>% 
+        mutate(title = ifelse(section_id == "Publications" & str_detect(description_2, "\\/"), glue::glue("[{title}]({description_2})"), title)) %>% 
+        mutate(description_2 = ifelse(section_id == "Publications" & str_detect(description_2, "\\/"), NA, description_2)) %>% 
         tidyr::unite(
             tidyr::starts_with('description'),
             col = "description_bullets",
@@ -107,6 +109,13 @@ print_section <- function(cv, section_id, glue_template = "default"){
 {description_bullets}
 
 \n\n\n"
+    }
+    if(section_id == "Publications"){
+        df <- df %>% 
+            mutate(description_bullets = str_replace(description_bullets, "Chun Su", "\\*\\*Chun Su\\*\\*")) %>% 
+            mutate(description_bullets = str_replace(description_bullets, "Su, C", "\\*\\*Su, C\\*\\*")) %>% 
+            mutate(description_bullets = str_replace(description_bullets, "Su C", "\\*\\*Su C\\*\\*")) %>% 
+            mutate(description_bullets = str_replace(description_bullets, "Su Chun", "\\*\\*Su Chun\\*\\*"))
     }
     glue::glue_data(df, glue_template) %>% 
         print()

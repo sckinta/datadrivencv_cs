@@ -57,13 +57,15 @@ print_skills(cv)
 
 Last updated on `r Sys.Date()`.
 
+Prepared by {Pagedown}
+
 # Main
 
 ## Chun Su {#title}
 
 ### Bioinformatics Scientist \| Computational Biologist
 
-I have 10+ years of hands-on experience in bioinformatics. Skilled in both molecular cloning and computational analysis of next generation sequencing (NGS) data. Proficient in a variety of programming languages, HPC cluster systems, cutting-edge bioinformatic software, and multivariate statistical analysis. Knowledgeable about molecular cell biology and immunology. Proven experience in troubleshooting and meeting challenging deadlines in a fast-paced work environment. Excellent professional communication and leadership skills developed through community service and extensive teaching experiences.
+I have 10+ years of hands-on experience in bioinformatics. Skilled in both molecular cloning and computational analysis of next generation sequencing (NGS) data. Proficient in a variety of programming languages, HPC systems, cutting-edge bioinformatic software, and multivariate statistical analysis. Knowledgeable about molecular cell biology and immunology. Proven experience in troubleshooting and meeting challenging deadlines in a fast-paced work environment. Excellent professional communication and leadership skills developed through community service and extensive teaching experiences.
 
 ## Education {data-icon=graduation-cap data-concise=true}
 
@@ -90,7 +92,7 @@ print_section(cv, "Leadership Experience")
 print_section(cv, "Awards and Honors")
 ```
 
-## Poster and Presentation {data-icon="users"}
+## Posters and Presentations {data-icon="users"}
 
 ```{r}
 print_section(cv, "Poster and Presentation")
