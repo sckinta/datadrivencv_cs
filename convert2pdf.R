@@ -14,7 +14,7 @@ pagedown::chrome_print(input = "chun_su_cv.html",
                        verbose = TRUE
                       )
 
-# render 
+# render resume
 rmarkdown::render("resume_render.Rmd",
                   params = list(pdf_mode = FALSE),
                   output_file = "resume_render.html")

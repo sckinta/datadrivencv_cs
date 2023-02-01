@@ -35,7 +35,8 @@ print_contact_info <- function(cv){
     df <- cv$contacts %>%
         rowwise() %>% 
         mutate(label = case_when(
-            loc %in% c("google scholar") ~ "chun-su",
+            loc %in% c("google scholar") ~ "Google Scholar",
+            loc %in% c("linkedin") ~ "LinkedIn",
             loc %in% c("website") ~ str_split(basename(contact), "\\.")[[1]][1],
                              TRUE ~ basename(contact))) %>%
         ungroup() %>% 
