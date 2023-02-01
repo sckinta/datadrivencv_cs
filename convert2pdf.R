@@ -12,3 +12,12 @@ pagedown::chrome_print(input = "chun_su_cv.html",
                        output = "chun_su_cv.pdf",
                        verbose = TRUE
                       )
+
+rmarkdown::render("resume_render.Rmd",
+                  params = list(pdf_mode = FALSE),
+                  output_file = "resume_render.html")
+
+pagedown::chrome_print(input = "resume_render.html",
+                       output = "cs_2page_resume.pdf",
+                       verbose = TRUE
+)

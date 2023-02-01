@@ -62,15 +62,23 @@ print_contact_info <- function(cv){
 
 print_skills <- function(cv){
     cv$skills %>% 
-        filter(in_resume, in_highlights) %>% 
+        filter(in_highlights) %>% 
         glue::glue_data(
             "-  <i class='fa fa-dot-circle-o'></i> {title}"
         ) %>% print()
 }
 
-print_section <- function(cv, section_id, glue_template = "default"){
-    df <- cv$entries %>% 
-        filter(section == section_id, in_resume) %>% 
+print_section <- function(cv, section_id, glue_template = "default", print_cv=T){
+    if(print_cv){
+        df <- cv$entries %>% 
+            filter(section == section_id, in_cv) 
+    }else{
+        df <- cv$entries %>% 
+            filter(section == section_id, in_resume) 
+    }
+    
+    
+    df <- df %>% 
         mutate(title = ifelse(section_id == "Publications" & str_detect(description_2, "\\/"), glue::glue("[{title}]({description_2})"), title)) %>% 
         mutate(description_2 = ifelse(section_id == "Publications" & str_detect(description_2, "\\/"), NA, description_2)) %>% 
         tidyr::unite(
